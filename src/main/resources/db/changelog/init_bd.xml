@@ -1,0 +1,36 @@
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   https://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.7.xsd">
+
+    <changeSet id="1" author="MIHAIL LYTOV">
+        <createTable tableName="operation_type">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="operation_type_pk"/>
+            </column>
+            <column name="code" type="varchar"/>
+            <column name="name" type="varchar"/>
+            <column name="description" type="varchar"/>
+        </createTable>
+
+        <createTable tableName="threat_template">
+            <column name="id" type="uuid">
+                <constraints primaryKey="true" nullable="false" primaryKeyName="threat_template_pk"/>
+            </column>
+            <column name="code" type="varchar"/>
+            <column name="name" type="varchar"/>
+            <column name="description" type="varchar"/>
+            <column name="default_probability" type="int"/>
+            <column name="default_impact" type="int"/>
+            <column name="operation_type_id" type="uuid">
+                <constraints foreignKeyName="threat_template_operation_type_id_fk"
+                             referencedTableName="operation_type"
+                             referencedColumnNames="id"
+                />
+            </column>
+            <column name="source_standard" type="varchar"/>
+            <column name="is_active" type="boolean"/>
+        </createTable>
+    </changeSet>
+</databaseChangeLog>
