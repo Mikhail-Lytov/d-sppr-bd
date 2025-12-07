@@ -1,5 +1,6 @@
 package com.lytov.diplom.dspprbd.infra.api;
 
+import com.lytov.diplom.dspprbd.domain.File;
 import com.lytov.diplom.dspprbd.dto.SearchRequestDTO;
 import com.lytov.diplom.dspprbd.infra.dto.response.VulnerabilityProcessResponse;
 import io.swagger.v3.oas.annotations.Operation;
@@ -12,12 +13,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-@Tag(name = "Бизнес операций")
-@RequestMapping("/api/v0/vulnerability-process")
-public interface VulnerabilityProcessController {
+@Tag(name = "Файлы")
+@RequestMapping("/api/v0/file")
+public interface FileController {
 
     @PostMapping("/search")
-    @Operation(description = "Получить операции")
+    @Operation(description = "Получить файлы")
     @ApiResponse(responseCode = "200", description = "OK",content = @Content(schema = @Schema(implementation = VulnerabilityProcessResponse.class)))
-    Page<VulnerabilityProcessResponse> getAll(@RequestBody SearchRequestDTO search);
+    Page<File> getAll(@RequestBody SearchRequestDTO search);
 }
