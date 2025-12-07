@@ -23,3 +23,6 @@ springdoc:
     tags-sorter: alpha
   api-docs:
     path: /api-docs
+
+server:
+  port: 8811

@@ -1,4 +1,4 @@
-package com.lytov.diplom.dparserbpmn;
+package com.lytov.diplom.dparser;
 
 import com.lytov.diplom.dspprbd.DSpprBdApplication;
 import org.springframework.boot.SpringApplication;
