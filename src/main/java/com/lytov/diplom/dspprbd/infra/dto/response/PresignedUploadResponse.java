@@ -2,6 +2,8 @@ package com.lytov.diplom.dspprbd.infra.dto.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 
+import java.util.UUID;
+
 public record PresignedUploadResponse(
         @Schema(description = "Временный URL для загрузки файла в MinIO", example = "https://minio.local/my-bucket/uploads/uuid?X-Amz-Algorithm=AWS4-HMAC-SHA256...")
         String uploadUrl,
@@ -10,7 +12,9 @@ public record PresignedUploadResponse(
         String objectName,
 
         @Schema(description = "Временный URL для скачивания файла из MinIO", example = "https://minio.local/my-bucket/uploads/uuid?X-Amz-Algorithm=AWS4-HMAC-SHA256...")
-        String downloadUrl
+        String downloadUrl,
+
+        UUID fileId
 ) {
 }
 

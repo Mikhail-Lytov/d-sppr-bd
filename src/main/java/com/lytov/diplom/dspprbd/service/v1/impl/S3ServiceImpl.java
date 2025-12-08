@@ -66,10 +66,10 @@ public class S3ServiceImpl implements S3Service {
             file.setOriginalName(downloadName);
             file.setDateCreate(Timestamp.from(Instant.now()));
 
-            fileRepository.save(file);
+            File entity = fileRepository.save(file);
             //String downloadUrl = generatePresignedGetUrl(downloadName, objectKey, contentType);
             log.info("generatePresignedPutUrl end: presignedPutUrl {} objectKey {} downloadUrl {}", presignedPut.url(), objectKey, null);
-            return new PresignedUploadResponse(presignedPut.url().toString(), objectKey, null);
+            return new PresignedUploadResponse(presignedPut.url().toString(), objectKey, null, entity.getId());
         } catch (Exception e) {
             log.error("generatePresignedPutUrl: Failed to generate an upload URL", e);
             throw new UploadUrlGenerationException(e.getMessage());
